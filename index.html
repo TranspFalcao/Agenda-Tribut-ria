@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Agenda Tributária - Transportadora Falcao Ltda</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Agenda Tributária - Transportadora Falcao Ltda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="image.png" alt="Logo" class="logo">
-            <h1>Agenda Tributária - Transportadora Falcao Ltda</h1>
-            <nav class="menu">
-                <a href="#">Início</a>
-                <a href="#">Sobre</a>
-                <a href="#">Contato</a>
-            </nav>
-        </div>
-    </header>
-    <button onclick="carregarDados()">Atualizar Dados</button>
+  <header>
+    <div class="header-container">
+      <img src="image.png" alt="Logo da empresa" class="logo">
+      <h1>Agenda Tributária - Transportadora Falcao Ltda</h1>
+      <nav>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <ul class="menu">
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
     <table id="tabela">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Obrigação</th>
-                <th>Estado / Tipo</th>
-                <th>Descrição</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Obrigação</th>
+          <th>Estado / Tipo</th>
+          <th class="descricao">Descrição</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
-    <footer>
-        <p>&copy; 2025 Transportadora Falcao Ltda. Todos os direitos reservados.</p>
-    </footer>
-    <script>
-        function carregarDados() {
-            fetch('vencimentos_unificados.json')
-            .then(response => response.json())
-            .then(data => {
-                const tbody = document.querySelector('#tabela tbody');
-                tbody.innerHTML = '';
-                data.forEach(item => {
-                    const row = `<tr>
-                        <td>${item.data}</td>
-                        <td>${item.obrigacao}</td>
-                        <td>${item.estado_tipo}</td>
-                        <td>${item.descricao}</td>
-                    </tr>`;
-                    tbody.innerHTML += row;
-                });
-            });
-        }
-        carregarDados();
-    </script>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Transportadora Falcao Ltda. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    fetch('vencimentos_unificados.json')
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.querySelector('#tabela tbody');
+        tbody.innerHTML = '';
+        data.forEach(item => {
+          const row = `<tr>
+            <td>${item.data}</td>
+            <td>${item.obrigacao}</td>
+            <td>${item.estado_tipo}</td>
+            <td class="descricao">${item.descricao}</td>
+          </tr>`;
+          tbody.innerHTML += row;
+        });
+      });
+  </script>
 </body>
 </html>
