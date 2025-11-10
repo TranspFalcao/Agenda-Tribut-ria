@@ -1,59 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Agenda Tributária - Transportadora Falcão</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    h1 { color: #2c3e50; }
-    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f2f2f2; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Agenda Tributária - Transportadora Falcao Ltda</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Agenda Tributária - Novembro 2025</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Data</th>
-        <th>Obrigação</th>
-        <th>Estado / Tipo</th>
-        <th>Descrição</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>10/11/2025 (segunda-feira)</td>
-        <td>ICMS Normal</td>
-        <td>Santa Catarina (SC)</td>
-        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
-      </tr>
-      <tr>
-        <td>12/11/2025 (quarta-feira)</td>
-        <td>ICMS Normal</td>
-        <td>Paraná (PR)</td>
-        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
-      </tr>
-      <tr>
-        <td>14/11/2025 (sexta-feira)</td>
-        <td>ICMS Apuração Normal</td>
-        <td>Mato Grosso do Sul (MS)</td>
-        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
-      </tr>
-      <tr>
-        <td>17/11/2025 (segunda-feira)</td>
-        <td>EFD-Reinf</td>
-        <td>Federal</td>
-        <td>Escrituração Fiscal Digital de Retenções – competência outubro/2025</td>
-      </tr>
-      <tr>
-        <td>25/11/2025 (terça-feira)</td>
-        <td>ICMS Normal (CPR 1250)</td>
-        <td>São Paulo (SP)</td>
-        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
-      </tr>
-    </tbody>
-  </table>
+    <header>
+        Agenda Tributária - Transportadora Falcao Ltda
+    </header>
+    <main>
+        <button onclick="carregarDados()">Atualizar Dados</button>
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Obrigação</th>
+                    <th>Estado / Tipo</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </main>
+    <script>
+        function carregarDados() {
+            fetch('vencimentos_unificados.json')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector('#tabela tbody');
+                    tbody.innerHTML = '';
+                    data.forEach(item => {
+                        const row = `<tr>
+                            <td>${item.data}</td>
+                            <td>${item.obrigacao}</td>
+                            <td>${item.estado_tipo}</td>
+                            <td>${item.descricao}</td>
+                        </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                });
+        }
+        carregarDados();
+    </script>
 </body>
 </html>
