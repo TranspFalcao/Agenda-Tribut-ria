@@ -7,7 +7,17 @@
 </head>
 <body>
     <header>
-        Agenda Tributária - Transportadora Falcao Ltda
+        <div class="logo-container">
+            <img src="image.png" alt="Logo da empresa" class="logo">
+            <h1>Agenda Tributária - Transportadora Falcao Ltda</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <button onclick="carregarDados()">Atualizar Dados</button>
@@ -23,23 +33,26 @@
             <tbody></tbody>
         </table>
     </main>
+    <footer>
+        <p>&copy; 2025 Transportadora Falcao Ltda. Todos os direitos reservados.</p>
+    </footer>
     <script>
         function carregarDados() {
             fetch('vencimentos_unificados.json')
-                .then(response => response.json())
-                .then(data => {
-                    const tbody = document.querySelector('#tabela tbody');
-                    tbody.innerHTML = '';
-                    data.forEach(item => {
-                        const row = `<tr>
-                            <td>${item.data}</td>
-                            <td>${item.obrigacao}</td>
-                            <td>${item.estado_tipo}</td>
-                            <td>${item.descricao}</td>
-                        </tr>`;
-                        tbody.innerHTML += row;
-                    });
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector('#tabela tbody');
+                tbody.innerHTML = '';
+                data.forEach(item => {
+                    const row = `<tr>
+                        <td>${item.data}</td>
+                        <td>${item.obrigacao}</td>
+                        <td>${item.estado_tipo}</td>
+                        <td>${item.descricao}</td>
+                    </tr>`;
+                    tbody.innerHTML += row;
                 });
+            });
         }
         carregarDados();
     </script>
