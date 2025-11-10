@@ -1,106 +1,35 @@
-/* Cabeçalho */
-.site-header {
-    display: flex;
-    align-items: center;
-    background-color: #000;
-    padding: 10px 20px;
-    flex-wrap: wrap;
-}
-
-.logo {
-    width: 300px;
-    height: auto;
-    margin-right: 20px;
-}
-
-.site-title {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-}
-
-/* Tabela */
-.agenda-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+body {
     font-family: Arial, sans-serif;
-}
-
-.agenda-table th {
-    background-color: #c00;
-    color: #fff;
-    padding: 10px;
-    text-align: left;
-    font-size: 16px;
-}
-
-.agenda-table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: 14px;
-}
-
-.agenda-table tr:hover {
-    background-color: #f5f5f5;
-}
-
-/* Rodapé */
-.site-footer {
-    background-color: #000;
-    color: #fff;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    padding: 15px;
-    font-size: 14px;
-    margin-top: 40px;
 }
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .site-header {
-        justify-content: center;
-        text-align: center;
-    }
-
-    .logo {
-        width: 200px;
-        margin: 0 auto 10px;
-    }
-
-    .site-title {
-        font-size: 20px;
-    }
-
-    .agenda-table th, .agenda-table td {
-        font-size: 12px;
-        padding: 8px;
-    }
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
 }
-
-@media (max-width: 480px) {
-    .agenda-table thead {
-        display: none;
-    }
-
-    .agenda-table tr {
-        display: block;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        padding: 10px;
-    }
-
-    .agenda-table td {
-        display: block;
-        text-align: left;
-        font-size: 14px;
-        padding: 5px 0;
-    }
-
-    .agenda-table td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: block;
-        color: #333;
-    }
+header img {
+    max-width: 150px;
+    height: auto;
+}
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+th {
+    background-color: #f2f2f2;
+}
+footer {
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
