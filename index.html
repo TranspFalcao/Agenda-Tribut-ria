@@ -1,54 +1,59 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda Tributária</title>
+  <title>Agenda Tributária - Transportadora Falcão</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-    header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
-    main { padding: 20px; }
-    section { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    h2 { color: #2c3e50; }
-    ul { list-style: none; padding: 0; }
-    li { padding: 10px 0; border-bottom: 1px solid #ddd; }
-    li:last-child { border-bottom: none; }
-    footer { text-align: center; padding: 10px; background: #ecf0f1; margin-top: 20px; }
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #2c3e50; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Agenda Tributária da Empresa</h1>
-  </header>
-  <main>
-    <section id="calendario">
-      <h2>Vencimentos</h2>
-      <ul></ul>
-    </section>
-  </main>
-  <footer>
-    <p>Fonte: https://www.contadores.cnt.br</p>
-  </footer>
-
-  <script>
-    fetch('vencimentos_icms_pr_novembro_2025.json')
-      .then(response => response.json())
-      .then(data => {
-        const lista = document.querySelector('#calendario ul');
-        lista.innerHTML = '';
-
-        data.vencimentos_icms_normal.forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item;
-          lista.appendChild(li);
-        });
-
-        document.querySelector('#calendario h2').textContent =
-          `Vencimentos de ${data.mes} ${data.ano} - ${data.estado}`;
-      })
-      .catch(error => {
-        console.error('Erro ao carregar os dados:', error);
-      });
-  </script>
+  <h1>Agenda Tributária - Novembro 2025</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Obrigação</th>
+        <th>Estado / Tipo</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>10/11/2025 (segunda-feira)</td>
+        <td>ICMS Normal</td>
+        <td>Santa Catarina (SC)</td>
+        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
+      </tr>
+      <tr>
+        <td>12/11/2025 (quarta-feira)</td>
+        <td>ICMS Normal</td>
+        <td>Paraná (PR)</td>
+        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
+      </tr>
+      <tr>
+        <td>14/11/2025 (sexta-feira)</td>
+        <td>ICMS Apuração Normal</td>
+        <td>Mato Grosso do Sul (MS)</td>
+        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
+      </tr>
+      <tr>
+        <td>17/11/2025 (segunda-feira)</td>
+        <td>EFD-Reinf</td>
+        <td>Federal</td>
+        <td>Escrituração Fiscal Digital de Retenções – competência outubro/2025</td>
+      </tr>
+      <tr>
+        <td>25/11/2025 (terça-feira)</td>
+        <td>ICMS Normal (CPR 1250)</td>
+        <td>São Paulo (SP)</td>
+        <td>Recolhimento mensal referente aos fatos geradores de outubro/2025</td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
