@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda Tributária</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+    main { padding: 20px; }
+    section { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { color: #2c3e50; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 10px 0; border-bottom: 1px solid #ddd; }
+    li:last-child { border-bottom: none; }
+    footer { text-align: center; padding: 10px; background: #ecf0f1; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Agenda Tributária da Empresa</h1>
+  </header>
+  <main>
+    <section id="calendario">
+      <h2>Vencimentos</h2>
+      <ul></ul>
+    </section>
+  </main>
+  <footer>
+    <p>Fonte: https://www.contadores.cnt.br</p>
+  </footer>
+
+  <script>
+    fetch('vencimentos_icms_pr_novembro_2025.json')
+      .then(response => response.json())
+      .then(data => {
+        const lista = document.querySelector('#calendario ul');
+        lista.innerHTML = '';
+
+        data.vencimentos_icms_normal.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          lista.appendChild(li);
+        });
+
+        document.querySelector('#calendario h2').textContent =
+          `Vencimentos de ${data.mes} ${data.ano} - ${data.estado}`;
+      })
+      .catch(error => {
+        console.error('Erro ao carregar os dados:', error);
+      });
+  </script>
+</body>
+</html>
